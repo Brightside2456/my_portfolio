@@ -1,6 +1,7 @@
 "use client";
-import { JSX } from "react";
-import { useState, useEffect } from "react";
+// import { JSX } from "react";
+
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 import Spline from '@splinetool/react-spline';
@@ -161,7 +162,7 @@ function TerminalNode() {
   ]);
 
   // The database of available commands
-  const commands: Record<string, string | JSX.Element> = {
+  const commands: Record<string, string | React.ReactNode> = {
     "whoami": (
       <div className="space-y-1">
         <p>Bright Sefah.</p>
