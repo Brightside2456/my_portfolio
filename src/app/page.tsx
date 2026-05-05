@@ -194,7 +194,7 @@ function TerminalNode() {
         <p>Resolving host... done.</p>
         <p>Connecting to server... connected.</p>
         <p>Downloading [===================================] 100%</p>
-        <p>File saved. (Action: You would link your actual PDF here)</p>
+        <p>File saved.</p>
       </div>
     ),
     "clear": ""
