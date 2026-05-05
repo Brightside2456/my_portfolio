@@ -206,7 +206,17 @@ function TerminalNode() {
       setHistory([]);
       return;
     }
-
+    
+    // Intercept the wget command to trigger the actual file download
+    if (cmd === "wget resume.pdf") {
+      const link = document.createElement("a");
+      link.href = "/resume.pdf"; // This looks in the public folder
+      link.download = "Bright_Sefah_Intelligent_Systems.pdf"; // The name the file saves as on their computer
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+    
     const output = commands[cmd] || `Command not found: ${cmd}`;
     // Append the new command and output to the memory buffer
     setHistory((prev) => [...prev, { cmd, output }]);
