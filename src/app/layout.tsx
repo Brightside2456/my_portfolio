@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css";
 
 // You can customize this metadata—it's what shows up on Google and browser tabs!
@@ -17,6 +18,7 @@ export default function RootLayout({
       {/* We removed the Google Font variables and set a pure black background */}
       <body className="antialiased bg-black text-white selection:bg-green-500 selection:text-black">
         {children}
+        <Analytics/>
       </body>
     </html>
   );
