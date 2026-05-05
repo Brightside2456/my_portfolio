@@ -42,7 +42,7 @@ export default function Home() {
               isImageRight={false}
             />
 
-            <ProjectBlueprint 
+            <ProjectBlueprint
               title="Orcta Trace: IoT Fleet Management"
               description="Real-time tracking, ledger management, and distributed system orchestration for sustainable transport networks."
               hardware="ESP32 & Arduino edge nodes, high-frequency telemetry transmitters."
@@ -107,11 +107,11 @@ function HeroSection() {
 function ProjectBlueprint({ title, description, hardware, software, visualPlaceholder, splineUrl, isImageRight }: any) {
   return (
     <div className={`flex flex-col lg:flex-row items-center gap-12 ${isImageRight ? 'lg:flex-row-reverse' : ''}`}>
-      
+
       {/* Visual / 3D Canvas Side */}
       <div className="w-full lg:w-1/2 h-[400px] md:h-[500px] border border-gray-800 bg-gray-900/30 rounded-lg flex items-center justify-center p-2 relative overflow-hidden group">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05)_0%,transparent_70%)] pointer-events-none" />
-        
+
         {/* Logic: If there is a Spline URL, render the 3D model. If not, show the text placeholder. */}
         {splineUrl ? (
           <div className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing">
@@ -122,7 +122,7 @@ function ProjectBlueprint({ title, description, hardware, software, visualPlaceh
             {visualPlaceholder}
           </span>
         )}
-        
+
         {/* Cyber-Industrial UI Overlays */}
         <div className="absolute top-4 left-4 flex gap-2 z-10 pointer-events-none">
           <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
@@ -137,7 +137,7 @@ function ProjectBlueprint({ title, description, hardware, software, visualPlaceh
       <div className="w-full lg:w-1/2 space-y-6">
         <h2 className="text-3xl font-bold tracking-wide">{title}</h2>
         <p className="text-gray-400 text-lg leading-relaxed">{description}</p>
-        
+
         <div className="space-y-4 pt-4 border-t border-gray-800">
           <div>
             <h3 className="text-gray-500 font-mono text-sm uppercase tracking-wider mb-1">Hardware & Edge</h3>
@@ -157,7 +157,7 @@ function ProjectBlueprint({ title, description, hardware, software, visualPlaceh
 // Module 4: The Interactive CLI (About & Contact)
 function TerminalNode() {
   // This state array acts as our memory buffer for the terminal output
-  const [history, setHistory] = useState([
+  const [history, setHistory] = useState<{ cmd: string; output: React.ReactNode }[]>([
     { cmd: "", output: "Welcome to the Bright Sefah Network. Type a command or select a node below to begin." }
   ]);
 
@@ -173,7 +173,7 @@ function TerminalNode() {
     ),
     "cat tech_stack.json": (
       <pre className="text-gray-300">
-{`{
+        {`{
   "Software & Logic": ["C++", "Python", "ROS / Nav2"],
   "Cloud & Infrastructure": ["AWS", "Systemd", "Linux Administration"],
   "Hardware & Edge": ["ESP32", "Raspberry Pi", "IoT Telemetry"],
@@ -206,7 +206,7 @@ function TerminalNode() {
       setHistory([]);
       return;
     }
-    
+
     const output = commands[cmd] || `Command not found: ${cmd}`;
     // Append the new command and output to the memory buffer
     setHistory((prev) => [...prev, { cmd, output }]);
