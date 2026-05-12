@@ -14,9 +14,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       {/* We removed the Google Font variables and set a pure black background */}
-      <body className="antialiased bg-black text-white selection:bg-green-500 selection:text-black">
+      <body 
+        className="antialiased bg-black text-white selection:bg-green-500 selection:text-black transition-colors duration-300"
+        suppressHydrationWarning
+      >
         {children}
         <Analytics/>
       </body>
